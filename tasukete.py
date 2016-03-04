@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #coding:utf-8
 from __future__ import (
     absolute_import,
@@ -81,7 +82,6 @@ def main():
     for rev in revs:
         commiter = git_blame(args.filename, rev=rev)
         users += safe_slice(commiter, line - neighbor, line + neighbor + 1)
-
 
     helpers = [user["email"] for user in users if user["email"] != me]
 
