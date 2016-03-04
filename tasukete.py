@@ -4,7 +4,6 @@ from __future__ import (
     absolute_import,
     division,
     print_function,
-    unicode_literals,
 )
 
 import argparse
@@ -18,7 +17,7 @@ NOTFOUND_COM = "notfound@notfound.com"
 
 def git_command(cmd):
     args = shlex.split("git {}".format(cmd))
-    return subprocess.check_output(args).rstrip()
+    return subprocess.check_output(args).decode("utf-8").rstrip()
 
 def git_blame(filename, rev=None, range_=None):
     if not rev:
@@ -33,7 +32,6 @@ def git_blame(filename, rev=None, range_=None):
         output = git_command(" ".join([base_cmd] + opt)).split("\n")
         return [parse_blame(line) for line in output]
     except:
-        # git blame fail
         return []
 
 def git_rev_list(rev=None):
