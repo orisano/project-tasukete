@@ -1,10 +1,6 @@
 #!/usr/bin/env python
-#coding:utf-8
-from __future__ import (
-    absolute_import,
-    division,
-    print_function,
-)
+# coding:utf-8
+from __future__ import absolute_import, division, print_function
 
 import argparse
 import collections
@@ -18,6 +14,7 @@ NOTFOUND_COM = "notfound@notfound.com"
 def git_command(cmd):
     args = shlex.split("git {}".format(cmd))
     return subprocess.check_output(args).decode("utf-8").rstrip()
+
 
 def git_blame(filename, rev=None, range_=None):
     if not rev:
@@ -34,26 +31,30 @@ def git_blame(filename, rev=None, range_=None):
     except:
         return []
 
+
 def git_rev_list(rev=None):
     if not rev:
         rev = "HEAD"
     output = git_command("rev-list {}".format(rev))
     return output.split("\n")
 
+
 def git_config(prop):
     output = git_command("config {}".format(prop))
     return output
 
+
 def parse_blame(line):
     obj = re.match(r"^.*?\((.*?)\).*$", line)
-    email, _date, _time, _timezone, lineno = re.match(r"^<(\S+)>\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)$", obj.group(1)).groups()
-    return {
-        "email": email,
-        "lineno": int(lineno),
-    }
+    email, _date, _time, _timezone, lineno = re.match(
+        r"^<(\S+)>\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)$", obj.group(1)
+    ).groups()
+    return {"email": email, "lineno": int(lineno)}
+
 
 def clamp(x, min_, max_):
     return min(max(x, min_), max_)
+
 
 def safe_slice(list_, start, end):
     # [start, end)
@@ -61,6 +62,7 @@ def safe_slice(list_, start, end):
     start = clamp(start, 0, size - 1)
     end = clamp(end, start, size)
     return list_[start:end]
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -87,6 +89,7 @@ def main():
         print(collections.Counter(helpers).most_common(1)[0][0])
     else:
         print(NOTFOUND_COM)
+
 
 if __name__ == "__main__":
     main()
