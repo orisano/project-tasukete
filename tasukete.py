@@ -80,8 +80,8 @@ def main():
 
     users = []
     for rev in revs:
-        commiter = git_blame(args.filename, rev=rev)
-        users += safe_slice(commiter, line - neighbor, line + neighbor + 1)
+        committer = git_blame(args.filename, rev=rev)
+        users += safe_slice(committer, line - neighbor, line + neighbor + 1)
 
     helpers = [user["email"] for user in users if user["email"] != me]
 
