@@ -19,15 +19,14 @@ def git_blame(filename, rev=None, range_=None):
     if not rev:
         rev = "HEAD"
     base_cmd = "blame {rev} {filename}".format(rev=rev, filename=filename)
-    opt = []
-    opt.append("-e")
+    opt = ["-e"]
     if range_:
         opt.append("-L {},{}".format(range_[0], range_[1]))
 
     try:
         output = git_command(" ".join([base_cmd] + opt)).split("\n")
         return [parse_blame(line) for line in output]
-    except:
+    except Exception as e:
         return []
 
 
