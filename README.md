@@ -17,3 +17,9 @@ optional arguments:
   -r RECENT, --recent RECENT
 
 ```
+
+##　Author
+Nao YONASHIRO(@orisano)
+
+## License
+MIT
