@@ -18,7 +18,7 @@ optional arguments:
 
 ```
 
-##　Author
+## Author
 Nao YONASHIRO(@orisano)
 
 ## License
