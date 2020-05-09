@@ -19,7 +19,7 @@ optional arguments:
 ```
 
 ## Author
-Nao YONASHIRO(@orisano)
+Nao Yonashiro (@orisano)
 
 ## License
 MIT
