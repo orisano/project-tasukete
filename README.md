@@ -1,10 +1,12 @@
 # Project Tasukete
 ## Installation
-```pip install git+https://github.com/orisano/project-tasukete.git```
+```
+$ pip install git+https://github.com/orisano/project-tasukete.git
+```
 
 ## Usage
 ```
-tasukete.py --help
+$ tasukete.py --help
 usage: tasukete.py [-h] [-n NEIGHBOR] [-r RECENT] filename line
 
 positional arguments:
